@@ -26,7 +26,7 @@ export const ProductsBox = chakra(Flex, {
   baseStyle: {
     width: '100%',
     gap: 6,
-    marginTop: 6,
+    marginTop: 4,
     flexWrap: 'wrap',
     justifyContent: 'center',
   },

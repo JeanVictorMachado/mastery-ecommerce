@@ -1,29 +1,34 @@
 export type BannerImageProps = {
-  asset: { _ref: strin }
+  asset: { _ref: string }
 }
 
 export type BannerDataProps = {
-  image: BannerImageProps
   buttonText: string
-  product: string
   desc: number
-  smallText: string
-  midText: string
+  discount: string
+  image: BannerImageProps
   largeText1: string
   largeText2: string
-  discount: string
+  midText: string
+  product: string
   saleTime: string
+  smallText: string
+}
+
+export type ProductSlugProps = {
+  current: string
 }
 
 export type ProductsProps = {
+  _id: string
+  details: string
   image: string
   name: string
-  slug: string
   price: number
-  details: string
+  slug: ProductSlugProps
 }
 
 export type HomeProps = {
-  products: ProductsProps[]
   bannerData: BannerDataProps[]
+  products: ProductsProps[]
 }

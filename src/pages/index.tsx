@@ -3,10 +3,13 @@ import { client } from '../../lib/client'
 import { FooterBanner } from '@/components/FooterBanner'
 import { HeroBanner } from '@/components/HeroBanner'
 import { HomeProps } from '@/@types/pages/Home'
+import { Product } from '@/components/Product'
 
 import * as S from '../styles/pages/home'
 
 export default function Home({ products, bannerData }: HomeProps) {
+  console.log(products)
+
   return (
     <>
       <HeroBanner bannerData={bannerData} />
@@ -16,7 +19,12 @@ export default function Home({ products, bannerData }: HomeProps) {
         <S.Subtitle>Speaker There are many variations passges</S.Subtitle>
       </S.TitleBox>
 
-      <S.ProductsBox>{products?.map((product) => product.name)}</S.ProductsBox>
+      <S.ProductsBox>
+        {products?.map((product) => (
+          <Product key={product._id} product={product} />
+        ))}
+      </S.ProductsBox>
+
       <FooterBanner />
     </>
   )
