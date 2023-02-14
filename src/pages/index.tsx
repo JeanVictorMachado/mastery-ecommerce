@@ -8,11 +8,12 @@ import { Product } from '@/components/Product'
 import * as S from '../styles/pages/home'
 
 export default function Home({ products, bannerData }: HomeProps) {
-  console.log(products)
+  console.log({ products })
+  console.log({ bannerData })
 
   return (
     <>
-      <HeroBanner bannerData={bannerData} />
+      <HeroBanner bannerData={bannerData[0]} />
 
       <S.TitleBox>
         <S.Title>Best Seller Products</S.Title>
@@ -25,7 +26,7 @@ export default function Home({ products, bannerData }: HomeProps) {
         ))}
       </S.ProductsBox>
 
-      <FooterBanner />
+      <FooterBanner bannerData={bannerData[0]} />
     </>
   )
 }
