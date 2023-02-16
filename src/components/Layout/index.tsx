@@ -13,9 +13,7 @@ type LayoutProps = {
 export const Layout = ({ children }: LayoutProps) => {
   return (
     <S.Container>
-      <Head>
-        <S.Title>JS Mastery Store</S.Title>
-      </Head>
+      <Head>JS Mastery Stores</Head>
 
       <S.NavbarBox>
         <NavBar />
