@@ -6,7 +6,7 @@ export const Container = chakra(Box, {
     width: '100%',
     paddingY: '100px',
     paddingX: '80px',
-    borderBottomRadius: 16,
+    borderRadius: 16,
     position: 'relative',
     lineHeight: 0.9,
     background: 'gray.300',
