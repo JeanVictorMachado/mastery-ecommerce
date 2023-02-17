@@ -22,7 +22,7 @@ export type ProductSlugProps = {
 export type ProductsProps = {
   _id: string
   details: string
-  image: string
+  image: string[]
   name: string
   price: number
   slug: ProductSlugProps
