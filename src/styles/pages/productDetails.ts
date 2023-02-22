@@ -144,6 +144,24 @@ export const BuyNowButton = chakra(AddToCartButton, {
 export const MaylikeProductsBox = chakra(Flex, {
   baseStyle: {
     marginTop: 120,
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+})
+
+export const Marquee = chakra(Box, {
+  baseStyle: {
+    width: '100%',
+    height: '400px',
+    position: 'relative',
+    overflowX: 'hidden',
+  },
+})
+
+export const MaylikeProducts = chakra(Flex, {
+  baseStyle: {
+    gap: 4,
+    marginTop: 8,
     justifyContent: 'center',
   },
 })

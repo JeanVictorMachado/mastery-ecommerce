@@ -6,6 +6,7 @@ import { ProductDetailsProps } from '@/@types/pages/ProductDetails'
 import { AiFillStar, AiOutlineMinus, AiOutlinePlus, AiOutlineStar } from 'react-icons/ai'
 
 import * as S from '../../styles/pages/productDetails'
+import { Product } from '@/components/Product'
 
 export default function ProductDetails({ product, products }: ProductDetailsProps) {
   const { image, name, details, price } = product
@@ -65,6 +66,13 @@ export default function ProductDetails({ product, products }: ProductDetailsProp
 
       <S.MaylikeProductsBox>
         <S.ProductName>You may also like</S.ProductName>
+        <S.Marquee>
+          <S.MaylikeProducts>
+            {products.map((product) => (
+              <Product key={product._id} product={product} />
+            ))}
+          </S.MaylikeProducts>
+        </S.Marquee>
       </S.MaylikeProductsBox>
     </>
   )

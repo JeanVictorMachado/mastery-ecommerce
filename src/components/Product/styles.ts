@@ -2,20 +2,20 @@ import { chakra, Box, Img, Text } from '@chakra-ui/react'
 
 export const CardBox = chakra(Box, {
   baseStyle: {
+    width: '250px',
+    height: '250px',
     transform: 'scale(1, 1)',
     transition: 'transform 0.5s ease',
     color: '#324d67',
 
     _hover: {
-      transform: 'scale(1.1, 1.1)',
+      transform: 'scale(1.1, 1.05)',
     },
   },
 })
 
 export const Image = chakra(Img, {
   baseStyle: {
-    width: '250px',
-    height: '250px',
     borderRadius: 16,
     background: 'gray.300',
   },
