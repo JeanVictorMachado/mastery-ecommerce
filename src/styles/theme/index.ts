@@ -1,5 +1,7 @@
 import { extendTheme, theme } from '@chakra-ui/react'
 
+import global from './global'
+
 export const customTheme = extendTheme({
   ...theme,
   config: {
@@ -7,9 +9,9 @@ export const customTheme = extendTheme({
     useSystemColorMode: false,
   },
   styles: {
-    global: {
-      'html, body': {},
-    },
+    global: () => ({
+      ...global,
+    }),
   },
   colors: {
     ...theme.colors,

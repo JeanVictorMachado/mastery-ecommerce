@@ -8,7 +8,7 @@ export const Container = chakra(Flex, {
     borderRadius: 16,
     position: 'relative',
     lineHeight: 1,
-    marginTop: '120px',
+    marginTop: '150px',
     color: 'gray.100',
     background: 'red.500',
     alignItems: 'center',

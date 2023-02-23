@@ -6,7 +6,7 @@ export const CardBox = chakra(Box, {
     height: '250px',
     transform: 'scale(1, 1)',
     transition: 'transform 0.5s ease',
-    color: '#324d67',
+    color: 'gray.600',
 
     _hover: {
       transform: 'scale(1.1, 1.05)',
@@ -17,7 +17,7 @@ export const CardBox = chakra(Box, {
 export const Image = chakra(Img, {
   baseStyle: {
     borderRadius: 16,
-    background: 'gray.300',
+    background: 'gray.200',
   },
 })
 

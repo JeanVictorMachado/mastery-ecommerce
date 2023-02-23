@@ -1,29 +1,46 @@
-import { Box } from '@chakra-ui/react'
+import { useState } from 'react'
+import { Box, keyframes } from '@chakra-ui/react'
 import { client, urlFor } from '../../../lib/client'
 
 import { ProductsProps } from '@/@types/pages/Home'
 import { ProductDetailsProps } from '@/@types/pages/ProductDetails'
 import { AiFillStar, AiOutlineMinus, AiOutlinePlus, AiOutlineStar } from 'react-icons/ai'
+import { Product } from '@/components/Product'
 
 import * as S from '../../styles/pages/productDetails'
-import { Product } from '@/components/Product'
+
+const animationKeyframes = keyframes`
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+`
+
+const animation = `${animationKeyframes} 15s linear infinite`
 
 export default function ProductDetails({ product, products }: ProductDetailsProps) {
   const { image, name, details, price } = product
+
+  const [index, setIndex] = useState(0)
 
   return (
     <>
       <S.Container>
         <Box>
           <S.ImageBox>
-            <S.Image src={urlFor(image[0])} />
+            <S.Image src={urlFor(image[index])} />
           </S.ImageBox>
 
-          {/* <S.SmallImagesBox>
-            {image?.map((img, index) => (
-              <S.SmallImage key={index} src={urlFor(img)} />
+          <S.SmallImagesBox>
+            {image?.map((img, i) => (
+              <>
+                <S.SmallImage
+                  key={index}
+                  src={urlFor(img)}
+                  onMouseEnter={() => setIndex(i)}
+                  background={i === index ? 'red.500' : 'gray.200'}
+                />
+              </>
             ))}
-          </S.SmallImagesBox> */}
+          </S.SmallImagesBox>
         </Box>
 
         <S.ProductDetailsDesc>
@@ -40,7 +57,7 @@ export default function ProductDetails({ product, products }: ProductDetailsProp
 
           <S.DetailTitle>Details:</S.DetailTitle>
           <S.DetailText>{details}</S.DetailText>
-          <S.DetailText>${price}</S.DetailText>
+          <S.PriceDetailText>${price}</S.PriceDetailText>
 
           <S.QuantityBox>
             <S.DetailTitle>Quantity:</S.DetailTitle>
@@ -67,7 +84,7 @@ export default function ProductDetails({ product, products }: ProductDetailsProp
       <S.MaylikeProductsBox>
         <S.ProductName>You may also like</S.ProductName>
         <S.Marquee>
-          <S.MaylikeProducts>
+          <S.MaylikeProducts animation={animation}>
             {products.map((product) => (
               <Product key={product._id} product={product} />
             ))}

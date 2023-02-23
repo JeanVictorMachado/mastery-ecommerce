@@ -1,4 +1,5 @@
 import { Box, Button, chakra, Flex, Img, Text } from '@chakra-ui/react'
+import { motion } from 'framer-motion'
 
 export const Container = chakra(Flex, {
   baseStyle: {
@@ -14,7 +15,17 @@ export const ImageBox = chakra(Box, {
 })
 
 export const Image = chakra(Img, {
-  baseStyle: {},
+  baseStyle: {
+    width: '400px',
+    borderRadius: 16,
+    background: 'gray.200',
+    cursor: 'pointer',
+    transition: '.3s ease-in-out',
+
+    _hover: {
+      background: 'red.500',
+    },
+  },
 })
 
 export const SmallImagesBox = chakra(Flex, {
@@ -76,6 +87,15 @@ export const DetailTitle = chakra(Text, {
 export const DetailText = chakra(Text, {
   baseStyle: {
     color: 'gray.500',
+  },
+})
+
+export const PriceDetailText = chakra(Text, {
+  baseStyle: {
+    marginY: 4,
+    fontSize: 22,
+    fontWeight: 600,
+    color: 'red.500',
   },
 })
 
@@ -143,13 +163,13 @@ export const BuyNowButton = chakra(AddToCartButton, {
 
 export const MaylikeProductsBox = chakra(Flex, {
   baseStyle: {
-    marginTop: 120,
+    marginTop: 12,
     flexDirection: 'column',
     alignItems: 'center',
   },
 })
 
-export const Marquee = chakra(Box, {
+export const Marquee = chakra(motion(Box), {
   baseStyle: {
     width: '100%',
     height: '400px',
@@ -161,7 +181,16 @@ export const Marquee = chakra(Box, {
 export const MaylikeProducts = chakra(Flex, {
   baseStyle: {
     gap: 4,
-    marginTop: 8,
+    marginTop: 12,
     justifyContent: 'center',
+
+    position: 'absolute',
+    whiteSpace: 'nowrap',
+    willChange: 'transform',
+    width: '180%',
+
+    _hover: {
+      animationPlayState: 'paused',
+    },
   },
 })
