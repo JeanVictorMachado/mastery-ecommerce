@@ -2,10 +2,12 @@ import { useState } from 'react'
 import { Box, keyframes } from '@chakra-ui/react'
 import { client, urlFor } from '../../../lib/client'
 
-import { ProductsProps } from '@/@types/pages/Home'
+import { ProductProps } from '@/@types/pages/Home'
 import { ProductDetailsProps } from '@/@types/pages/ProductDetails'
-import { AiFillStar, AiOutlineMinus, AiOutlinePlus, AiOutlineStar } from 'react-icons/ai'
+import { useShoppingCart } from '@/hooks/ShoppingCart'
 import { Product } from '@/components/Product'
+
+import { AiFillStar, AiOutlineMinus, AiOutlinePlus, AiOutlineStar } from 'react-icons/ai'
 
 import * as S from '../../styles/pages/productDetails'
 
@@ -18,6 +20,8 @@ const animation = `${animationKeyframes} 15s linear infinite`
 
 export default function ProductDetails({ product, products }: ProductDetailsProps) {
   const { image, name, details, price } = product
+
+  const { qty, incQty, decQty, onAdd } = useShoppingCart()
 
   const [index, setIndex] = useState(0)
 
@@ -62,18 +66,22 @@ export default function ProductDetails({ product, products }: ProductDetailsProp
           <S.QuantityBox>
             <S.DetailTitle>Quantity:</S.DetailTitle>
             <S.QuantityDesc>
-              <S.Minus onClick="">
+              <S.Minus onClick={decQty}>
                 <AiOutlineMinus />
               </S.Minus>
-              <S.Num>10</S.Num>
-              <S.Plus onClick="">
+              <S.Num>{qty}</S.Num>
+              <S.Plus onClick={incQty}>
                 <AiOutlinePlus />
               </S.Plus>
             </S.QuantityDesc>
           </S.QuantityBox>
 
           <S.ButtonsBox>
-            <S.AddToCartButton colorScheme="red" variant="outline">
+            <S.AddToCartButton
+              colorScheme="red"
+              variant="outline"
+              onClick={() => onAdd({ product, quantity: qty })}
+            >
               Add to Cart
             </S.AddToCartButton>
             <S.BuyNowButton colorScheme="red">Buy Now</S.BuyNowButton>
@@ -104,7 +112,7 @@ export const getStaticPaths = async () => {
 
   const products = await client.fetch(query)
 
-  const paths = products.map((product: ProductsProps) => ({
+  const paths = products.map((product: ProductProps) => ({
     params: {
       slug: product.slug.current,
     },

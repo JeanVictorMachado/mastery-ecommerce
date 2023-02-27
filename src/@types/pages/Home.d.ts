@@ -19,16 +19,17 @@ export type ProductSlugProps = {
   current: string
 }
 
-export type ProductsProps = {
+export type ProductProps = {
   _id: string
   details: string
   image: string[]
   name: string
   price: number
   slug: ProductSlugProps
+  quantity?: number
 }
 
 export type HomeProps = {
   bannerData: BannerDataProps[]
-  products: ProductsProps[]
+  products: ProductProps[]
 }

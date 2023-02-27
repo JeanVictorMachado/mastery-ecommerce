@@ -1,6 +1,6 @@
-import { ProductsProps } from './Home'
+import { ProductProps } from './Home'
 
 export type ProductDetailsProps = {
-  product: ProductsProps
-  products: ProductsProps[]
+  product: ProductProps
+  products: ProductProps[]
 }
