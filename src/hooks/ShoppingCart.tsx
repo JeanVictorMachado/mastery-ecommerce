@@ -55,7 +55,17 @@ export const ShoppingCartProvider = ({ children }: ReactComponentProps) => {
 
   return (
     <Context.Provider
-      value={{ showCart, cartItems, totalPrice, totalQuantities, qty, incQty, decQty, onAdd }}
+      value={{
+        showCart,
+        cartItems,
+        totalPrice,
+        totalQuantities,
+        qty,
+        incQty,
+        decQty,
+        onAdd,
+        setShowCart,
+      }}
     >
       {children}
     </Context.Provider>

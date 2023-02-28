@@ -14,4 +14,5 @@ export type ShoppingCartContextProps = {
   incQty: () => void
   decQty: () => void
   onAdd: ({ product: ProductProps, quantity: number }) => void
+  setShowCart: (param: boolean) => void
 }
